@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>LOGIN</title>
+<title>Contacts</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
-<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
-<link href="jQueryAssets/jquery.ui.datepicker.min.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/jquery-1.4.2.js" ></script>
 <script type="text/javascript" src="js/cufon-yui.js"></script>
 <script type="text/javascript" src="js/cufon-replace.js"></script>  
 <script type="text/javascript" src="js/Myriad_Pro_600.font.js"></script>
-<script src="jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
-<script src="jQueryAssets/jquery-ui-1.9.2.datepicker.custom.min.js" type="text/javascript"></script>
-
-<!-------------------JAVA SCRIPT-------------------------------->
-<script type="text/javascript">
-	
-</script>
-
+<!--[if lt IE 9]>
+	<script type="text/javascript" src="http://info.template-help.com/files/ie6_warning/ie6_script_other.js"></script>
+	<script type="text/javascript" src="js/html5.js"></script>
+<![endif]-->
 </head>
-<body id="page3">
+<body id="page2">
 <div class="extra">
 	<div class="main">
 <!-- header -->
 		<header>
-		
 			<div class="wrapper">
-				<h1><a href="index.html" id="logo">Around the Woorld</a></h1>
+				<h1><a href="index.html" id="logo">Around the World</a></h1>
 				<div class="right">
 					<div class="wrapper">
 						<form id="search" action="" method="post">
@@ -43,7 +35,7 @@
 						<nav>
 							<ul id="top_nav">
 								<li><a href="#">Registrarse</a></li>
-								<li><a href="#">Intranet</a></li>
+								<li><a href="login.html">Intranet</a></li>
 								<li><a href="#">Ayuda</a></li>
 							</ul>
 						</nav>
@@ -52,36 +44,31 @@
 			</div>
 			<nav>
 				<ul id="menu">
-					<li><a href="index.html" class="nav1">INICIO</a></li>
+					<li><a href="index.html" class="nav1">Inicio</a></li>
 					<li><a href="About.html" class="nav2">NOSOTROS </a></li>
-					<li><a href="Tours.html" class="nav3">MAPA</a></li>
-					<li><a href="Destinations.html" class="nav4">DESTINOS</a></li>
-					<li class="end"><a href="Contacts.html" class="nav5">ContactO</a></li>
+					<li><a href="Tours.html" class="nav3"> MAPA</a></li>
+					<li><a href="Destinations.html" class="nav4">destinos</a></li>
+					<li class="end"><a href="Contacts.html" class="nav5">contacto</a></li>
 				</ul>
 			</nav>
-			<!--  ACA VA EL MAPA -->
-            
-            <div> 
-            <center> 
-          <br><br><br><br><br><br><br><br><br>
-            <form action="login.php" method="POST">
-				Usuario: <input type="text" name="user" /><br><br>
-				Password: <input type="password" name="pass" /><br><br>
-				<input type="submit" value="Registrar" />
-			</form>
-              
-            </center>
-			</div>
-            
-            
-            
-	  </header>
-<!-- / header -->
-<!-- content -->
-		<section id="content">
+			<div class="text">
 
-        </section>
-<!-- / content -->
+			
+		</header>
+<!-- / header -->
+<!-- Contenido-->
+<?php
+	session_start();
+  	$logeado = false;
+  	if($_SESSION['logged'] == 'yes')
+  	{
+    	echo 'Aqui va el contenido con session iniciada';
+    	$logeado = true;   
+  	}else{
+    	echo 'No estas logeado, largate de aqui.';  
+  	}
+?>
+<!-- / fin contenido -->
 	</div>
 	<div class="block"></div>
 </div>
@@ -95,11 +82,6 @@
 <!-- / footer -->
 	</div>
 </div>
-<script type="text/javascript">
-Cufon.now();
-$(function() {
-	$( "#Datepicker1" ).datepicker(); 
-});
-</script>
+<script type="text/javascript"> Cufon.now(); </script>
 </body>
 </html>
