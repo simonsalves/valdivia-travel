@@ -71,7 +71,7 @@
 <?php
     if($logeado)
     {
-        echo "<a href=a_lugar.php >Agregar lugar turistico</a><br>";
+        echo "<a href=a_lugar.html >Agregar lugar turistico</a><br>";
         echo "<a href=# >Editar lugar turistico</a>";
     }
 ?>

@@ -52,11 +52,6 @@
 				</ul>
 			</nav>
 			<div class="text">
-
-			
-		</header>
-<!-- / header -->
-<!-- Contenido-->
 <?php
 	session_start();
   	$logeado = false;
@@ -68,6 +63,34 @@
     	echo 'No estas logeado, largate de aqui.';  
   	}
 ?>
+<br><br><br>
+Los campos con * son obligatorios. <br><br>
+
+<form action="reg_lugar.php" method="POST">
+		Descripcion: <input type="text" name="descripcion" />
+		Direcccion: <input type="text" name="direccion" /><br><br>
+		Telefono: <input type="text" name="telefono" />
+		Horario: <input type="text" name="horario" /><br><br>
+		Pagina web: <input type="text" name="url" />
+		correo: <input type="mail" name="correo" /><br><br>
+		Latitud: <input type="text" name="latitud" />
+		Longitud: <input type="text" name="longitud" /><br>
+		<input type="submit" value="Registrar" />
+		</form>
+
+			
+		</header>
+<!-- / header -->
+<!-- Contenido-->
+<?php
+    if($logeado)
+    {
+		echo "";
+        echo "asdasdsad";
+    }
+?>
+
+
 <!-- / fin contenido -->
 	</div>
 	<div class="block"></div>
