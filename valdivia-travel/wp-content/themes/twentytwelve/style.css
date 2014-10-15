@@ -1,0 +1,60 @@
+@import url('css/foundation.css');
+@import url('css/foundation-icons/foundation-icons.css');
+@import url(http://fonts.googleapis.com/css?family=Dosis:300,400);
+
+body{
+	background-image: url('img/bg.jpg');
+} 
+
+.header{
+	border-bottom: 5px solid #323232;
+	padding-bottom: 0.1em;
+}
+
+footer{
+	margin-top: 3em;
+	background-image: url('img/bg_footer.jpg');
+	width: 100%;
+	padding-top: 0.5em;
+	color: #F0FFFF;
+	background-color: #8B008B;
+	font-family: 'Dosis', sans-serif;
+}
+
+#menu {
+	margin-left: 0;
+	width:100%;
+	overflow:hidden;
+	margin-top:1.5em;
+	margin-bottom:-1px;
+	height:57px;
+}
+#menu li {
+	float:left;
+	list-style: none;
+}
+#menu li a {
+	display:block;
+	font-size:26px;
+	color:#fff;
+	font-weight:600;
+	padding:0 35px;
+	border-radius:4px 4px 0 0;
+	-moz-border-radius:4px 4px 0 0;
+		-webkit-border-radius:4px 4px 0 0;
+	behavior:url(js/PIE.htc);
+	text-decoration:none;
+	text-transform:uppercase;
+	line-height:57px;
+}
+#menu li a:hover, #menu #menu_active a {
+	background:#323232;
+}
+#menu .end a {
+	padding-right:36px;
+}
+.nav1 {background:#3081c8}
+.nav2 {background:#8cbd20}
+.nav3 {background:#f09e2f}
+.nav4 {background:#b530ba}
+.nav5 {background:#30b6c9}
