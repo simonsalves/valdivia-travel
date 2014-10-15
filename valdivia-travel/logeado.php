@@ -52,18 +52,20 @@
         </ul>
       </nav>
       <div class="text">
-        <?php
-  session_start();
-  $logeado = false;
-  if($_SESSION['logged'] == 'yes')
-  {
-    echo 'Bienvenido '.$_SESSION['user'].', esta es tu pagina personal.';
-    $logeado = true;
-    
-  }else{
-    echo 'No estas logeado, largate de aqui.';  
-  }
+
+      <?php
+        session_start();
+        $logeado = false;
+        if($_SESSION['logged'] == 'yes')
+        {
+          echo 'Bienvenido '.$_SESSION['user'].', esta es tu pagina personal.';
+          $logeado = true;
+          echo ' <img src="images/intranet.png">';
+        }else{
+          echo 'No estas logeado, largate de aqui.';  
+        }
 ?>
+
       
     </header>
 <!-- / header -->
@@ -72,7 +74,7 @@
     if($logeado)
     {
         echo "<a href=a_lugar.html >Agregar lugar turistico</a><br>";
-        echo "<a href=# >Editar lugar turistico</a>";
+        echo "<a href=e_lugar.php >Editar lugar turistico</a>";
     }
 ?>
 <!-- / contenido -->

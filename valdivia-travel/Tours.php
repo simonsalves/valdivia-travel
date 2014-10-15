@@ -17,7 +17,7 @@
 	<script type="text/javascript" src="js/html5.js"></script>
 <![endif]-->
 
-<!-------------------JAVA SCRIPT-------------------------------->
+<!---JAVA SCRIPT-->
 <script type="text/javascript">
 var misPuntos = [
     ["torreon-norte", "-39.818020", "-73.232784", "icon", "<div>html</div>"],
@@ -37,6 +37,21 @@ function inicializaGoogleMaps() {
     var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
     setGoogleMarkers(mapa, misPuntos);
 }
+
+
+function newmap(x, y){
+	var x = x; 
+    var y = y;
+    var propiedades = { //OPCIONES DEL MAPA
+        zoom: 13, //ZOOM DEL MAPA
+        center: new google.maps.LatLng(x, y),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
+    setGoogleMarkers(mapa, misPuntos);	
+}
+
 
 var markers = Array();
 var infowindowActivo = false;
@@ -68,7 +83,7 @@ function setGoogleMarkers(mapa, locations) {
 </script>
 
 </head>
-<body id="page3" onload=inicializaGoogleMaps()">
+<body id="page3" onload=inicializaGoogleMaps()>
 <div class="extra">
 	<div class="main">
 <!-- header -->
@@ -99,7 +114,7 @@ function setGoogleMarkers(mapa, locations) {
 				<ul id="menu">
 					<li><a href="index.html" class="nav1">INICIO</a></li>
 					<li><a href="About.html" class="nav2">NOSOTROS </a></li>
-					<li><a href="Tours.html" class="nav3">MAPA</a></li>
+					<li><a href="Tours.php" class="nav3">MAPA</a></li>
 					<li><a href="Destinations.html" class="nav4">DESTINOS</a></li>
 					<li class="end"><a href="Contacts.html" class="nav5">ContactO</a></li>
 				</ul>
@@ -115,11 +130,63 @@ function setGoogleMarkers(mapa, locations) {
             
 		</header>
 <!-- / header -->
-<!-- content -->
-		<section id="content">
-        aqi va el contenido
-        </section>
-<!-- / content -->
+<!-- contenido -->
+		<form method="post" action="Tours.php" >
+		Elija una opcion<br/><br/>
+			<label>PYME <input type="radio" name="clase" value="pyme"/></label>
+			<label>Lugar <input type="radio" name="clase" value="lugar"/></label><br/><br/>
+			<input type="submit" name="mostrar" value="Mostrar"><br/>
+		</form>
+
+
+
+
+
+<?php
+	require_once('funciones.php');
+	conectar('localhost', 'root', '', 'tesis_p1');
+
+	if(isset($_REQUEST['mostrar']) && isset($_REQUEST['clase'])){
+		$clase = $_POST['clase'];?>
+
+		<?php include("mysql.php"); ?>
+		<?php $db = new MySQL(); ?>
+		<?php $consulta = $db -> consulta("SELECT * FROM $clase"); ?>
+		<?php if($db->num_rows($consulta)>0): ?>
+			<table border="1">
+				<tr><td colspan="6"><hr/></td></tr>
+				<tr>
+					<td width="10%">Descripcion</td>
+					<td width="10%">Direccion</td>
+					<td width="10%">Telefono</td>
+					<td width="10%">Horario</td>
+					<td width="10%">URL</td>
+					<td width="10%">Correo</td>
+				</tr>
+				<tr><td colspan="6"><hr/></td></tr>
+				<?php while($resultados = $db->fetch_array($consulta)): ?>
+					<tr>
+						<td><a href="#" onClick="newmap(<?php echo $resultados['latitud']; ?>, <?php echo $resultados['longitud']; ?>);" title="Haga click para ver en el mapa"><?php echo $resultados['descripcion']; ?></a></td>
+						<td><?php echo $resultados['direccion']; ?></td>
+						<td><?php echo $resultados['telefono']; ?></td>
+						<td><?php echo $resultados['horario']; ?></td>
+						<td><a href="<?php echo $resultados['url']; ?>" target="_blank"><?php echo $resultados['url']; ?></a></td>
+						<td><?php echo $resultados['correo']; ?></td>
+					</tr>
+				<?php endwhile; ?>
+				<tr><td colspan="6"><hr/></td></tr>
+				<tr>
+					<td>Total de <?php echo $clase; ?></td><td colspan="5"><?php echo $db->num_rows($consulta); ?></td>
+				</tr>
+			</table>
+		<?php endif; ?>
+<?php } ?>
+
+		
+
+
+
+<!-- / fin del contenido -->
 	</div>
 	<div class="block"></div>
 </div>

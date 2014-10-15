@@ -52,41 +52,41 @@
 				</ul>
 			</nav>
 			<div class="text">
+
+
+
 <?php
 	session_start();
   	$logeado = false;
   	if($_SESSION['logged'] == 'yes')
   	{
-    	echo 'Aqui va el contenido con session iniciada';
+    	//echo 'Aqui va el contenido con session iniciada';
     	$logeado = true;   
   	}else{
     	echo 'No estas logeado, largate de aqui.';  
   	}
 ?>
 <br><br><br>
-Los campos con * son obligatorios. <br><br>
-
-<form action="reg_lugar.php" method="POST">
-		Descripcion*: <input type="text" name="descripcion" />
-		Direcccion*: <input type="text" name="direccion" /><br><br>
-		Telefono: <input type="text" name="telefono" />
-		Horario*: <input type="text" name="horario" /><br><br>
-		Pagina web: <input type="text" name="url" />
-		correo: <input type="mail" name="correo" /><br><br>
-		Latitud*: <input type="text" name="latitud" />
-		Longitud*: <input type="text" name="longitud" /><br><br>
-		<input type="submit" value="Registrar" />
-		</form>
+<div id="oculto" >
+	
+	</div>
 		</header>
 <!-- / header -->
 <!-- Contenido-->
-<?php
-    if($logeado)
-    {
-		echo "";
-        echo "asdasdsad";
-    }
-?>
+
+
+<?php include("mysql.php"); ?>
+<?php $db = new MySQL(); ?>
+<?php $consulta = $db -> consulta("SELECT descripcion FROM lugar"); ?>
+<?php if($db->num_rows($consulta)>0): ?>
+	Seleccione un lugar para editar<select id="mostrar">
+	<option>Seleccione uno</option>
+	<?php while($resultados = $db->fetch_array($consulta)): ?>
+		<option data-id="<?php echo $resultados['id_lugar']; ?>" ><?php echo $resultados['descripcion']; ?></option>
+	
+	<?php endwhile; ?>
+	</select>
+<?php endif; ?>
 
 
 <!-- / fin contenido -->
@@ -104,5 +104,17 @@ Los campos con * son obligatorios. <br><br>
 	</div>
 </div>
 <script type="text/javascript"> Cufon.now(); </script>
+<script>
+	$('#mostrar').change(function(e){
+		var str = "";
+	    $( "select option:selected" ).each(function() {
+	      str += $( this ).text() + " ";
+			$.get("php/get.php", { filtro: str }, function(data){
+				$('#oculto').html(data);
+			});
+	    });
+	});
+
+</script>
 </body>
 </html>
