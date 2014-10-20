@@ -34,9 +34,7 @@
 <![endif]-->
 <?php wp_head(); ?>
 </head>
-
 <body>
-
 <header>
 	<br/>	
 	<div class="row header">
@@ -53,22 +51,25 @@
 					<br/>
 						<div class="row collapse">
 							<div class="row">
-								<div class="small-10 columns">
-									<input type="text" placeholder="Buscar..">
+								<div class="small-8 columns">
+									<input type="text" placeholder="Buscar...">
 								</div>
 								<div class="small-2 columns">
 									<a href="#" class="button postfix"><i class="fi-magnifying-glass"></i></a>
+								</div>
+								<div class="large-2 columns">
+									<a href="#" class="button postfix round" title="Ayuda"><i class="fi-universal-access size-24"></i></a>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="large-6 columns">
-
 							<?php if ( is_user_logged_in() ): ?>
 								<a href="<?php bloginfo('url'); ?>/?page_id=18" class="button split expand tiny">Intranet <span data-dropdown="drop"></span></a><br>
 								<ul id="drop" class="f-dropdown" data-dropdown-content>
 									<li><a href="#" data-reveal-id="agregar">Agregar lugar</a></li>
 									<li><a href="#">Editar lugar</a></li>
+									<li><a href="#">Enlazar</a></li>
 
 									<li><a href="<?php echo wp_logout_url( $redirect ); ?>">Salir</a></li>
 								</ul>
@@ -77,7 +78,19 @@
 							<?php endif; ?>
 							</div>
 							<div class="large-6 columns">
-								<a class="button tiny expand" href="#">Ayuda</a>
+							<?php if ( is_user_logged_in() ): ?><!--LOGEADO-->
+								<a href="<?php bloginfo('url'); ?>/?page_id=23" class="button split expand tiny">PYMES <span data-dropdown="pymes"></span></a><br>
+								<ul id="pymes" class="f-dropdown" data-dropdown-content>
+									<li><a href="<?php bloginfo('url'); ?>/?page_id=28">Registrar pyme</a></li>
+									<li><a href="<?php bloginfo('url'); ?>/?page_id=31">Registrar dueño</a></li>
+								</ul>
+							<?php else: ?>
+								<a href="<?php bloginfo('url'); ?>/?page_id=23" class="button split expand tiny">PYMES <span data-dropdown="pymes"></span></a><br>
+								<ul id="pymes" class="f-dropdown" data-dropdown-content>
+									<li><a href="<?php bloginfo('url'); ?>/?page_id=28">Registrar pyme</a></li>
+									<li><a href="<?php bloginfo('url'); ?>/?page_id=31">Registrar dueño</a></li>
+								</ul>
+							<?php endif; ?>
 							</div>
 							<div class="row">
 								<?php if (is_user_logged_in()): ?><?php $current_user = wp_get_current_user(); ?><h6 class="text-center">Bienvenido <?php echo $current_user->display_name; ?> <i class="fi-torso"></i></h6><?php endif; ?>

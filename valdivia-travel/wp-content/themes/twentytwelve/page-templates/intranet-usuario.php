@@ -39,6 +39,8 @@ get_header(); ?>
 			<ul class="side-nav">
 				<li><a data-reveal-id="agregar" href="#">Agregar lugar turistico</a></li>
 				<li><a href="#">Editar lugar</a></li>
+				<li><a href="#">Enlazar</a></li>
+				<li><a href="<?php echo wp_logout_url( $redirect ); ?>">Cerrar sesion</a></li>
 			</ul>
 		</div>
 	</div>
