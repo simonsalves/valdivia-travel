@@ -16,7 +16,7 @@
 </div>
 <div id="agregar" class="reveal-modal small" data-reveal>
   <h4>Agregar un nuevo lugar turistico</h4>
-<form data-abide action="reg_lugar.php" method="post">
+<form data-abide action="<?php echo get_template_directory_uri(); ?>/php/reg_lugar.php" method="post">
 
 	<div class="row">
 		<div class="large-12 columns">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Intranet usuarios
+ * Template Name: Intranet usuarios enlazar
  *
  * Description: Twenty Twelve loves the no-sidebar look as much as
  * you do. Use this page template to remove the sidebar from any page.
@@ -46,25 +46,48 @@ get_header(); ?>
 		</div>
 	</div>
 	<div class="large-9 columns">
-		<div class="row">
-			<div class="large-12 columns">
-				<fieldset>
-					<legend>Editar lugar turistico</legend>
-					<?php include(TEMPLATEPATH."/php/mysql.php"); ?>
+
+
+<div class="row">
+	<div class="large-12 columns">
+		<fieldset>
+			<legend>Enlazar</legend>
+			<div class="row">
+				<form action="<?php echo get_template_directory_uri(); ?>/php/enlazar.php" method="post">
+					<div class="large-5 columns">
+						<?php include(TEMPLATEPATH."/php/mysql.php"); ?>
 					<?php $db = new MySQL(); ?>
-					<?php $consulta = $db -> consulta("SELECT descripcion FROM lugar"); ?>
-					<?php if($db->num_rows($consulta)>0): ?>
-						Seleccione un lugar para editar<select id="mostrar">
+						<?php $consulta = $db -> consulta("SELECT rut, id_cliente_pyme FROM cliente_pyme"); ?>
+						<?php if($db->num_rows($consulta)>0): ?>
+						Dueño<select id="mostrar" name="id_cliente_pyme">
 						<option>Seleccione uno</option>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<option data-id="<?php echo $resultados['id_lugar']; ?>" ><?php echo $resultados['descripcion']; ?></option>
+						<option value="<?php echo $resultados['id_cliente_pyme']; ?>" ><?php echo $resultados['rut']; ?></option>
 						<?php endwhile; ?>
 						</select>
-					<?php endif; ?>
-					<div id="oculto" ></div>
-				</fieldset>		
+						<?php endif; ?>
+					</div>
+					<div class="large-5 columns">
+						<?php $consulta = $db -> consulta("SELECT descripcion, id_pyme FROM pyme"); ?>
+						<?php if($db->num_rows($consulta)>0): ?>
+						PYME<select id="mostrar" name="id_pyme">
+						<option>Seleccione uno</option>
+						<?php while($resultados = $db->fetch_array($consulta)): ?>
+						<option value="<?php echo $resultados['id_pyme']; ?>" ><?php echo $resultados['descripcion']; ?></option>
+						<?php endwhile; ?>
+						</select>
+						<?php endif; ?>
+					</div>
+					<div class="large-2 columns">
+						<input type="hidden" name="id_user" value="<?php echo $current_user->ID; ?>">
+						<button class="button tiny"><i class="fi-link size-60"></i></button>
+					</div>
+				</form>
 			</div>
-		</div>
+		</fieldset>		
+	</div>
+</div>
+
 	</div>
 </div>
 

@@ -18,7 +18,7 @@ get_header(); ?>
 <br/>
 <div class="row">
 	<div class="large-5 columns">
-		<form data-abide method="post" action="#">
+		<form data-abide method="post" action="<?php echo get_template_directory_uri(); ?>/php/registro-dueno-pyme.php">
 			<fieldset>
 			<legend>Registro de Dueño</legend>
 
@@ -66,7 +66,7 @@ get_header(); ?>
 					<div class="large-6 columns">
 						<div class="password-field">
 							<label>Password <small>required</small>
-								<input type="password" id="password" required pattern="[a-zA-Z]+">
+								<input type="password" id="passwd" name="passwd" required pattern="[a-zA-Z]+">
 							</label>
 							<small class="error">Requerido</small>
 						</div>
@@ -74,7 +74,7 @@ get_header(); ?>
 					<div class="large-6 columns">
 						<div class="password-confirmation-field">
 							<label>Confirm Password <small>required</small>
-								<input type="password" required pattern="[a-zA-Z]+" data-equalto="password">
+								<input type="password" required pattern="[a-zA-Z]+" name="passwd" data-equalto="passwd">
 							</label>
 							<small class="error">Requerido</small>
 						</div>

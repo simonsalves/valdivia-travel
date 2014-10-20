@@ -121,13 +121,11 @@ get_header(); ?>
 	</div>
 	<div class="large-7 columns">
 		<div id="alerta" class="hide">
-			
-			<div data-alert class="alert-box success radius">
-			This is a success alert with a radius.
-			<a href="#" class="close">&times;</a>
+			<div data-alert class="alert-box">
+				<div id="respuesta"></div>
+ 				<a href="#" class="close">&times;</a>
 			</div>
 		</div>
-
 	</div>
 </div>
 
@@ -135,14 +133,16 @@ get_header(); ?>
 
 
 <script>
-	
+	/*
 $('#reg').on('click', function(e){
 	e.preventDefault();
-	$.post($('$formulario').attr('action'),{$('$formulario').serialize()}, function(data){
-		$('$alerta').html(data).fadeIn();
+	$('$formulario').tri
+	$.post($('$formulario').attr('action'), {$('$formulario').serialize()}, function(data){
+		$('$respuesta').html(data);
+		$('$alerta').fadeIn();
 	});
 });
-
+*/
 </script>
 
 

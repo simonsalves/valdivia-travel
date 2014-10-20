@@ -19,7 +19,7 @@ if($db->num_rows($consulta)>0){
 	}
 }else{
 	$consulta = $db->consulta("INSERT INTO pyme VALUES (NULL, '$descripcion', '$telefono', '$horario', '$direccion', '$latitud', '$longitud', '$url', '$correo', '$id_tipo')");
-	
+	echo "Se registro correctamente";
 }
 
 ?>

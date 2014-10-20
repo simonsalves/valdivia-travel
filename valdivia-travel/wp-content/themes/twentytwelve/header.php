@@ -65,14 +65,17 @@
 						<div class="row">
 							<div class="large-6 columns">
 							<?php if ( is_user_logged_in() ): ?>
+								<?php $current_user = wp_get_current_user(); ?>
+								<?php if ($current_user->user_status == 0 ): ?>
 								<a href="<?php bloginfo('url'); ?>/?page_id=18" class="button split expand tiny">Intranet <span data-dropdown="drop"></span></a><br>
 								<ul id="drop" class="f-dropdown" data-dropdown-content>
 									<li><a href="#" data-reveal-id="agregar">Agregar lugar</a></li>
-									<li><a href="#">Editar lugar</a></li>
-									<li><a href="#">Enlazar</a></li>
-
+									<li><a href="<?php bloginfo('url'); ?>/?page_id=28">Registrar pyme</a></li>
+									<li><a href="<?php bloginfo('url'); ?>/?page_id=18">Editar lugar</a></li>
+									<li><a href="<?php bloginfo('url'); ?>/?page_id=36">Enlazar</a></li>
 									<li><a href="<?php echo wp_logout_url( $redirect ); ?>">Salir</a></li>
 								</ul>
+							<?php endif; ?>
 							<?php else: ?>
 								<a data-reveal-id="modal-login" href="#" class="button expand tiny">Intranet</a>
 							<?php endif; ?>
@@ -83,6 +86,7 @@
 								<ul id="pymes" class="f-dropdown" data-dropdown-content>
 									<li><a href="<?php bloginfo('url'); ?>/?page_id=28">Registrar pyme</a></li>
 									<li><a href="<?php bloginfo('url'); ?>/?page_id=31">Registrar dueño</a></li>
+									<li><a href="<?php echo wp_logout_url( $redirect ); ?>">Salir</a></li>
 								</ul>
 							<?php else: ?>
 								<a href="<?php bloginfo('url'); ?>/?page_id=23" class="button split expand tiny">PYMES <span data-dropdown="pymes"></span></a><br>
@@ -108,7 +112,7 @@
 						<li><a href="<?php bloginfo('url'); ?>/?page_id=4" class="nav2">Nosotros </a></li>
 						<li><a href="<?php bloginfo('url'); ?>/?page_id=20" class="nav3">MAPA</a></li>
 						<li><a href="<?php bloginfo('url'); ?>/?page_id=8" class="nav4">Destinos</a></li>
-						<li class="end"><a href="<?php bloginfo('url'); ?>" class="nav5">Contacto</a></li>
+						<li class="end"><a href="<?php bloginfo('url'); ?>/?page_id=33" class="nav5">Contacto</a></li>
 					</ul>
 				</nav>
 			</div>

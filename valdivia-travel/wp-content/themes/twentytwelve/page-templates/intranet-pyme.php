@@ -25,18 +25,7 @@ get_header(); ?>
 <?php else: ?>
 	<div class="row">
 		<div class="large-5 columns">
-			<form data-abide method="post" action="">
-			<fieldset>
-				<legend>INGRESO PYMES</legend>
-				<label>Usuario
-				<input type="text" name="usuario">
-				</label>
-				<label>Contraseña
-				<input type="password" name="passwd">
-				</label>
-  				<button class="expand" type="submit">Ingresar</button>
-  			</fieldset>
-		</form>
+			<?php wp_login_form(); ?>
 		</div>
 	</div>
 <?php endif; ?>

@@ -42,6 +42,19 @@ function inicializaGoogleMaps() {
     setGoogleMarkers(mapa, misPuntos);
 }
 
+function newmap(x, y){
+	var x = x; 
+    var y = y;
+    var propiedades = { //OPCIONES DEL MAPA
+        zoom: 13, //ZOOM DEL MAPA
+        center: new google.maps.LatLng(x, y),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
+    setGoogleMarkers(mapa, misPuntos);	
+}
+
 var markers = Array();
 var infowindowActivo = false;
 function setGoogleMarkers(mapa, locations) {
@@ -81,5 +94,85 @@ $(document).ready(function(){inicializaGoogleMaps()});
 			</div>
 	</div>
 </div>
+<br/>
+<div class="row">
+    <div class="large-2 columns">
 
+		<div class="row">
+		    <form method="post" action="<?php bloginfo('url'); ?>/?page_id=20" >
+			<fieldset>
+			    <legend>Buscar</legend>
+			    	<div class="row">
+						<div class="large-6 columns">PYME</div>
+						<div class="large-6 columns">
+							<div class="switch small">
+								<input id="exampleRadioSwitch1" type="radio" name="clase" value="pyme">
+								<label for="exampleRadioSwitch1"></label>
+							</div> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-6 columns">Lugar</div>
+						<div class="large-6 columns">
+							<div class="switch small">
+								<input id="exampleRadioSwitch2" type="radio" name="clase" value="lugar">
+								<label for="exampleRadioSwitch2"></label>
+							</div> 
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-12 columns">
+							<input type="submit" name="mostrar" class="button expand tiny" value="Ver"><br/>
+						</div>
+					</div>
+			  </fieldset>
+		    </form>
+		</div>
+	</div>
+
+	<div class="large-10 columns">
+		
+
+<?php if(isset($_REQUEST['mostrar']) && isset($_REQUEST['clase'])){ ?>
+        
+    <?php $clase = $_POST['clase'];?>   
+
+
+        <?php include(TEMPLATEPATH."/php/mysql.php"); ?>
+        <?php $db = new MySQL(); ?>
+        <?php $consulta = $db -> consulta("SELECT * FROM $clase"); ?>
+        <?php if($db->num_rows($consulta)>0): ?>
+            <table>
+				<thead>
+					<tr>
+						<th colspan="6" width="100%"><center><?php echo strtoupper($clase); ?></center></th>
+					</tr>
+				</thead>
+                <tr>
+                    <td width="10%">Descripcion</td>
+                    <td width="10%">Direccion</td>
+                    <td width="10%">Telefono</td>
+                    <td width="10%">Horario</td>
+                    <td width="10%">URL</td>
+                    <td width="10%">Correo</td>
+                </tr>
+                <?php while($resultados = $db->fetch_array($consulta)): ?>
+                    <tr>
+                        <td><a href="#" onClick="newmap(<?php echo $resultados['latitud']; ?>, <?php echo $resultados['longitud']; ?>);" title="Haga click para ver en el mapa"><?php echo $resultados['descripcion']; ?></a></td>
+                        <td><?php echo $resultados['direccion']; ?></td>
+                        <td><?php echo $resultados['telefono']; ?></td>
+                        <td><?php echo $resultados['horario']; ?></td>
+                        <td><a href="<?php echo $resultados['url']; ?>" target="_blank"><?php echo $resultados['url']; ?></a></td>
+                        <td><?php echo $resultados['correo']; ?></td>
+                    </tr>
+                <?php endwhile; ?>
+                <tr>
+                    <td>Total</td><td colspan="5"><?php echo $db->num_rows($consulta); ?></td>
+                </tr>
+            </table>
+        <?php endif; } ?>
+
+	</div>
+    
+</div>
 <?php get_footer(); ?>
