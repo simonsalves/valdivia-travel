@@ -1,4 +1,5 @@
 @import url('css/foundation.css');
+@import url('css/jquery.mobile-1.0.min.css');
 @import url('css/foundation-icons/foundation-icons.css');
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
@@ -9,6 +10,11 @@ body h1, h2, h3, h4, h5, h6 {
 	font-family: 'Ubuntu', sans-serif;
 }
 
+
+.heder-movil, .heder-movil h1{
+	background-color: #111;
+	color: white !important;
+}
 .header{
 	border-bottom: 5px solid #323232;
 	padding-bottom: 0.1em;
@@ -56,8 +62,11 @@ footer{
 #menu .end a {
 	padding-right:36px;
 }
-.nav1 {background:#3081c8}
-.nav2 {background:#8cbd20}
-.nav3 {background:#f09e2f}
-.nav4 {background:#b530ba}
-.nav5 {background:#30b6c9}
+.redondo{
+	border-radius: 2em !important;
+}
+.nav1 {background:#3081c8 !important}
+.nav2 {background:#8cbd20 !important}
+.nav3 {background:#f09e2f !important}
+.nav4 {background:#b530ba !important}
+.nav5 {background:#30b6c9 !important}
