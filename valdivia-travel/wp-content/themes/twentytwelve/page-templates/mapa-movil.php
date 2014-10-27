@@ -1,14 +1,20 @@
 <?php
 /**
- * The Template for displaying all single posts
+ * Template Name: Mapa movil
+ *
+ * Description: Twenty Twelve loves the no-sidebar look as much as
+ * you do. Use this page template to remove the sidebar from any page.
+ *
+ * Tip: to remove the sidebar from all posts and pages simply remove
+ * any active widgets from the Main Sidebar area, and the sidebar will
+ * disappear everywhere.
  *
  * @package WordPress
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
-
-get_header(); ?>
-
+?>
+<?php get_header('movil'); ?>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/cufon-yui.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/cufon-replace.js"></script>  
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/Myriad_Pro_600.font.js"></script>
@@ -77,27 +83,11 @@ function setGoogleMarkers(mapa, locations) {
 }
 $(document).ready(function(){inicializaGoogleMaps()});
 </script>
+		<div id="mapa" style="width:100%; height:100%; margin:0 auto"> 
+            En esta seccion usted podra acceder a la ubicacion exacta de los lugares turisticos y del mismo modo con las pymes
+			
+			</div>
 
-
-<!--	<div id="primary" class="site-content">
-		<div id="content" role="main">
-
-			<?php while ( have_posts() ) : the_post(); ?>
-
-				<?php get_template_part( 'content', get_post_format() ); ?>
-
-				<nav class="nav-single">
-					<h3 class="assistive-text"><?php _e( 'Post navigation', 'twentytwelve' ); ?></h3>
-					<span class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'twentytwelve' ) . '</span> %title' ); ?></span>
-					<span class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'twentytwelve' ) . '</span>' ); ?></span>
-				</nav><!-- .nav-single -->
-
-				<!--<?php comments_template( '', true ); ?>
-
-			<?php endwhile; // end of the loop. ?>
-
-		</div><!-- #content -->
-	<!--</div><!-- #primary -->
-
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php wp_footer(); ?>
+</body>
+</html>

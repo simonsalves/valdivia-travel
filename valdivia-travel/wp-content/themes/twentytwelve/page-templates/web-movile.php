@@ -45,12 +45,12 @@
 		<dd class="accordion-navigation redondo">
 			<a href="#panel1">Buscar lugares turisticos</a>
 			<div id="panel1" class="content">
-				<!-------------------------------------------------------------------------------------------------------------------------------->
+			<!-------------------------------------------------------------------------------------------------------------------------------->
 				<?php $consulta = $db -> consulta("SELECT descripcion FROM lugar"); ?>
 				<?php if($db->num_rows($consulta)>0): ?>
 					<ul>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<li><?php echo $resultados['descripcion']; ?></li>
+							<li><a href="<?php bloginfo('url'); ?>/?page_id=42"><?php echo $resultados['descripcion']; ?></a></li>
 						<?php endwhile; ?>
 					</ul>
 				<?php endif;  ?>
@@ -60,12 +60,12 @@
 		<dd class="accordion-navigation">
 			<a href="#panel2">Buscar pymes</a>
 			<div id="panel2" class="content">
-				<!-------------------------------------------------------------------------------------------------------------------------------->
+			<!-------------------------------------------------------------------------------------------------------------------------------->
 				<?php $consulta = $db -> consulta("SELECT descripcion FROM pyme"); ?>
 				<?php if($db->num_rows($consulta)>0): ?>
 					<ul>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<li><?php echo $resultados['descripcion']; ?></li>
+							<li><a href="<?php bloginfo('url'); ?>/?page_id=42"><?php echo $resultados['descripcion']; ?></a></li>
 						<?php endwhile; ?>
 					</ul>
 				<?php endif;  ?>
@@ -125,18 +125,38 @@
 
 	<div id="registro-cliente" class="reveal-modal tiny" data-reveal>
 		<div class="row">
-			<form method="post" action="<?php echo get_template_directory_uri(); ?>/php/registro-cliente.php">
-				<fieldset>
-					<legend>Registro de cliente</legend>
+			<form data-abide method="post" action="<?php echo get_template_directory_uri(); ?>/php/registro-cliente.php">
+			<div class="row">
+				<h3>Registro de clientes</h3>				
+				
 
-					<label>Nombre
-						<input type="text" name="nombre" placeholder="Ingrese su nombre">
-					</label>
-					<label>Contraseña
-						<input type="password" name="passwd" placeholder="Ingrese una contraseña">
-					</label>
-				</fieldset>
+					<div class="name-field">
+						<label>Nombre <small>required</small>
+							<input type="text" name="nombre" required>
+						</label>
+						<small class="error">El nombre es necesario</small>
+					</div>
+					<div class="email-field">
+						<label>E-mail <small>required</small>
+							<input type="email" name="id" required>
+						</label>
+						<small class="error">El correo es necesario</small>
+					</div>
+					<div class="password-field">
+						<label>Contraseña <small>required</small>
+							<input type="password" id="password" required pattern="[a-zA-Z]+">
+						</label>
+						<small class="error">Ingrese una contraseña</small>
+					</div>
+					<div class="password-confirmation-field">
+						<label>Confirme la contraseña <small>required</small>
+							<input type="password" required pattern="[a-zA-Z]+" name="passwd" data-equalto="password">
+						</label>
+						<small class="error">Las contraseñas no coinciden</small>
+					</div>
+			
 				<input type="submit" value="Enviar">
+			</div>
 			</form>
 		</div>
 	<a class="close-reveal-modal">&#215;</a>

@@ -104,7 +104,9 @@
 <footer>
 	<div class="row">
 		<div class="large-9 columns">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque recusandae aspernatur, libero dignissimos. Vitae, animi. Iste blanditiis, officiis laboriosam vero deserunt similique reiciendis repellat odit doloribus aliquid alias minima.</div>
-		<div class="large-3 columns"></div>
+		<div class="large-3 columns">
+			<a href="<?php bloginfo('url'); ?>/?page_id=39"><i class="fi-mobile size-60"></i></a>
+		</div>
 	</div>
 </footer>
 
