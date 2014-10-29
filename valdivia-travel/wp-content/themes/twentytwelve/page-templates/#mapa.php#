@@ -23,45 +23,68 @@ get_header(); ?>
 
 <!-------------------JAVA SCRIPT-------------------------------->
 <script type="text/javascript">
-function inicializaGoogleMaps(pos) {
+var misPuntos = [
+    ["torreon-norte", "-39.818020", "-73.232784", "icon", "<div>html</div>"],
+    ["TORREON-SUR", "-39.817651", "-73.248651", "icon", "<div>html</div>"]
+];
+
+function inicializaGoogleMaps() {
     // COORDENADAS PARA CENTRAR EL MAPA
-    var x =-39.8180; 
-    var y = -73.2547;
+    var x =-39.818020; 
+    var y = -73.254729;
     var propiedades = { //OPCIONES DEL MAPA
         zoom: 15, //ZOOM DEL MAPA
-        center: new google.maps.LatLng(x, y),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
-
-    var mkr = new google.maps.Marker({
-			draggable: false, <!--  permite mover el icono -->
-			position: centro,
-			map: map
-		 });
-    
-}
-
-function newmap(x, y){
-    var x = x; 
-    var y = y;
-    var propiedades = { //OPCIONES DEL MAPA
-        zoom: 18, //ZOOM DEL MAPA
         center: new google.maps.LatLng(x, y),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
 
     var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
-    
-    var marker = new google.maps.Marker({
-	draggable: false, //permite mover el marcador
-	position: centro, //posicion del marcador
-	map: map
-	});
+    setGoogleMarkers(mapa, misPuntos);
 }
 
+function newmap(x, y){
+    var x = x; 
+    var y = y;
+    var image = '/img/gps.png';	
+    <?php echo get_template_directory_uri(); ?>/img/page1_img1.jpg
+    var propiedades = { //OPCIONES DEL MAPA
+        zoom: 18, //ZOOM DEL MAPA
+        center: new google.maps.LatLng(x, y),
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+	icon: image
+    }
 
+    var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
+    setGoogleMarkers(mapa, misPuntos);
+}
+
+var markers = Array();
+var infowindowActivo = false;
+function setGoogleMarkers(mapa, locations) {
+    // ICONO
+    var icon = new google.maps.MarkerImage('gps.png', new google.maps.Size(48, 48));
+
+    for(var i=0; i<locations.length; i++) {
+        var elPunto = locations[i];
+        var myLatLng = new google.maps.LatLng(elPunto[1], elPunto[2]);
+
+        markers[i]=new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: eval(elPunto[3]),
+            title: elPunto[0]
+        });
+        markers[i].infoWindow=new google.maps.InfoWindow({
+            content: elPunto[0]
+        });
+        google.maps.event.addListener(markers[i], 'click', function(){      
+            if(infowindowActivo)
+                infowindowActivo.close();
+            infowindowActivo = this.infoWindow;
+            infowindowActivo.open(map, this);
+        });
+    }
+}
 $(document).ready(function(){inicializaGoogleMaps()});
 </script>
 
