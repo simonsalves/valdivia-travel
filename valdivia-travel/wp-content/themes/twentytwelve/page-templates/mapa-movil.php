@@ -15,78 +15,64 @@
  */
 ?>
 <?php get_header('movil'); ?>
+
+<?php 
+	$lat = $_GET['lat'];
+	$long = $_GET['long'];
+?>
+
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/cufon-yui.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/cufon-replace.js"></script>  
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/Myriad_Pro_600.font.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
+
+<a id="estoy" href="#" data-lat="<?php echo $lat; ?>" data-lon="<?php echo $long; ?>"></a>
+
+<div id="mapa" style="width:100%; height:100%; margin:0 auto"> 
+	En esta seccion usted podra acceder a la ubicacion exacta de los lugares turisticos y del mismo modo con las pymes
+</div>
+
+
 <!-------------------JAVA SCRIPT-------------------------------->
 <script type="text/javascript">
-var misPuntos = [
-    ["torreon-norte", "-39.818020", "-73.232784", "icon", "<div>html</div>"],
-    ["TORREON-SUR", "-39.817651", "-73.248651", "icon", "<div>html</div>"]
-];
 
-function inicializaGoogleMaps() {
-    // COORDENADAS PARA CENTRAR EL MAPA
-    var x =-39.818020; 
-    var y = -73.254729;
-    var propiedades = { //OPCIONES DEL MAPA
-        zoom: 13, //ZOOM DEL MAPA
-        center: new google.maps.LatLng(x, y),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
 
-    var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
-    setGoogleMarkers(mapa, misPuntos);
-}
+$(document).on('ready', function(){
+	navigator.geolocation.getCurrentPosition(mapa, error);
+});
+function mapa(pos)
+	{
+		var contenedor = document.getElementById("mapa");
+		var latitud = pos.coords.latitude;
+		var longitud = pos.coords.longitude;
+		var lat = $('#estoy').attr('data-lat');
+		var lon = $('#estoy').attr('data-lon');
 
-function newmap(x, y){
-	var x = x; 
-    var y = y;
-    var propiedades = { //OPCIONES DEL MAPA
-        zoom: 13, //ZOOM DEL MAPA
-        center: new google.maps.LatLng(x, y),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+		var origen = new google.maps.LatLng(latitud, longitud);
+		var destino = new google.maps.LatLng(lat, lon);
+		var medio = google.maps.TravelMode.DRIVING;
+		var propiedades = {
+			origin: origen,
+			destination: destino,
+			travelMode: medio
+		 };
+		 
+		 var map = new google.maps.Map(contenedor, propiedades);
+	}
+	
+	function error(errorC)
+	{
+		if(errorC.code == 0)
+			alert("Error desconocido");
+		if(errorC.code == 1)
+			alert("No me dejaste ubicarte :(")
+		if(errorC.code == 2)
+			alert("me rendi");
+	}
 
-    var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
-    setGoogleMarkers(mapa, misPuntos);	
-}
-
-var markers = Array();
-var infowindowActivo = false;
-function setGoogleMarkers(mapa, locations) {
-    // ICONO
-    var icon = new google.maps.MarkerImage('gps.png', new google.maps.Size(48, 48));
-
-    for(var i=0; i<locations.length; i++) {
-        var elPunto = locations[i];
-        var myLatLng = new google.maps.LatLng(elPunto[1], elPunto[2]);
-
-        markers[i]=new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            icon: eval(elPunto[3]),
-            title: elPunto[0]
-        });
-        markers[i].infoWindow=new google.maps.InfoWindow({
-            content: elPunto[0]
-        });
-        google.maps.event.addListener(markers[i], 'click', function(){      
-            if(infowindowActivo)
-                infowindowActivo.close();
-            infowindowActivo = this.infoWindow;
-            infowindowActivo.open(map, this);
-        });
-    }
-}
-$(document).ready(function(){inicializaGoogleMaps()});
+	
 </script>
-		<div id="mapa" style="width:100%; height:100%; margin:0 auto"> 
-            En esta seccion usted podra acceder a la ubicacion exacta de los lugares turisticos y del mismo modo con las pymes
-			
-			</div>
 
 <?php wp_footer(); ?>
 </body>

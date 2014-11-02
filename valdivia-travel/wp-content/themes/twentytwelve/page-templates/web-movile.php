@@ -46,11 +46,11 @@
 			<a href="#panel1">Buscar lugares turisticos</a>
 			<div id="panel1" class="content">
 			<!-------------------------------------------------------------------------------------------------------------------------------->
-				<?php $consulta = $db -> consulta("SELECT descripcion FROM lugar"); ?>
+				<?php $consulta = $db -> consulta("SELECT descripcion, latitud, longitud FROM lugar"); ?>
 				<?php if($db->num_rows($consulta)>0): ?>
 					<ul>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<li><a href="<?php bloginfo('url'); ?>/?page_id=42"><?php echo $resultados['descripcion']; ?></a></li>
+							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>"><?php echo $resultados['descripcion']; ?></a></li>
 						<?php endwhile; ?>
 					</ul>
 				<?php endif;  ?>
@@ -61,11 +61,11 @@
 			<a href="#panel2">Buscar pymes</a>
 			<div id="panel2" class="content">
 			<!-------------------------------------------------------------------------------------------------------------------------------->
-				<?php $consulta = $db -> consulta("SELECT descripcion FROM pyme"); ?>
+				<?php $consulta = $db -> consulta("SELECT descripcion, latitud, longitud FROM pyme"); ?>
 				<?php if($db->num_rows($consulta)>0): ?>
 					<ul>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<li><a href="<?php bloginfo('url'); ?>/?page_id=42"><?php echo $resultados['descripcion']; ?></a></li>
+							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>"><?php echo $resultados['descripcion']; ?></a></li>
 						<?php endwhile; ?>
 					</ul>
 				<?php endif;  ?>
