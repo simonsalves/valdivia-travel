@@ -39,19 +39,28 @@
 
 
 
-	navigator.geolocation.getCurrentPosition(mapa, error);
 
+$(document).on('ready', function(){
+        navigator.geolocation.getCurrentPosition(mapa, error);
+});
+
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
 function mapa(pos)
 	{
-		var contenedor = document.getElementById("mapa");
+		directionsDisplay = new google.maps.DirectionsRenderer();
+		//var contenedor = document.getElementById("mapa");
 		var latitud = pos.coords.latitude;
 		var longitud = pos.coords.longitude;
 		var lat = $('#estoy').attr('data-lat');
 		var lon = $('#estoy').attr('data-lon');
+		var centro = new google.maps.LatLng(latitud, longitud);
+
 		var propiedades = {
 			center: centro,
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			zoom: 15
+			zoom: 17
 		 };
 
 		var origen = new google.maps.LatLng(latitud, longitud);
@@ -63,8 +72,16 @@ function mapa(pos)
 			travelMode: medio
 		 };
 		 
-		 var map = new google.maps.Map(contenedor, propiedades);
+		map = new google.maps.Map(document.getElementById("mapa"), propiedades);
+		directionsDisplay.setMap(map);
+		
+		directionsService.route(request, function(result, status) {
+		if (status == google.maps.DirectionsStatus.OK) {
+      			directionsDisplay.setDirections(result);
+    		}
+  		});
 	}
+
 	
 	function error(errorC)
 	{

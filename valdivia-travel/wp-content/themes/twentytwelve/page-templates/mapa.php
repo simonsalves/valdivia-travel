@@ -59,8 +59,7 @@ function newmap(x, y){
     	var marker = new google.maps.Marker({
 		draggable: false, //permite mover el marcador
 		position: centro, //posicion del marcador
-		map: mapa,
-		icon: 'gps.png'
+		map: mapa
 	});
     
 }
