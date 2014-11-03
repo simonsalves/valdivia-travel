@@ -44,22 +44,25 @@ function inicializaGoogleMaps(pos) {
 }
 
 function newmap(x, y){
-    var x = x; 
-    var y = y;
-    var propiedades = { //OPCIONES DEL MAPA
-        zoom: 18, //ZOOM DEL MAPA
-        center: new google.maps.LatLng(x, y),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+    	var x = x; 
+    	var y = y;
+    	var centro = new google.maps.LatLng(x, y);
+	
+	var propiedades = { //OPCIONES DEL MAPA
+        	zoom: 18, //ZOOM DEL MAPA
+        	center: new google.maps.LatLng(x, y),
+        	mapTypeId: google.maps.MapTypeId.ROADMAP
+    	}
+	
+	var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
 
-    var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
-    
-    var marker = new google.maps.Marker({
-	draggable: false, //permite mover el marcador
-	position: centro,   
-	title: 'de aqui somos',
-	map: map
+    	var marker = new google.maps.Marker({
+		draggable: false, //permite mover el marcador
+		position: centro, //posicion del marcador
+		map: mapa,
+		icon: '/img/gps.png'
 	});
+    
 }
 
 

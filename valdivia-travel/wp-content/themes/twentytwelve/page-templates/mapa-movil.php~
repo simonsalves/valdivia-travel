@@ -38,9 +38,9 @@
 <script type="text/javascript">
 
 
-
+$(document).on('ready', function(){
 	navigator.geolocation.getCurrentPosition(mapa, error);
-
+});
 function mapa(pos)
 	{
 		var contenedor = document.getElementById("mapa");
