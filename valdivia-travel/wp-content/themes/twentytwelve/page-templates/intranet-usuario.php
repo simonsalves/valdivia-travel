@@ -34,15 +34,34 @@ get_header(); ?>
 </div>
 <div class="row">
 	<div class="large-3 columns end">
-		<div class="panel callout">
-			<h5 class="text-center">¿Que desea hacer?</h5>
-			<ul class="side-nav">
-				<li><a data-reveal-id="agregar" href="#">Agregar lugar turistico</a></li>
-				<li><a href="<?php bloginfo('url'); ?>/?page_id=18">Editar lugar</a></li>
-				<li><a href="<?php bloginfo('url'); ?>/?page_id=36">Enlazar</a></li>
-				<li><a href="<?php bloginfo('url'); ?>/?page_id=28">Registrar pyme</a></li>
-				<li><a href="<?php echo wp_logout_url( $redirect ); ?>">Cerrar sesion</a></li>
-			</ul>
+		<div class="row">
+			<div class="panel callout">
+				<h5 class="text-center">¿Que desea hacer?</h5>
+				<ul class="side-nav">
+					<li><a data-reveal-id="agregar" href="#">Agregar lugar turistico</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/?page_id=18">Editar lugar</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/?page_id=36">Enlazar</a></li>
+					<li><a href="<?php bloginfo('url'); ?>/?page_id=28">Registrar pyme</a></li>
+					<li><a href="<?php echo wp_logout_url( $redirect ); ?>">Cerrar sesion</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="panel callout">
+			<h5 class="text-center">Crear tipo PYME</h5>
+			<form action="<?php echo get_template_directory_uri(); ?>/php/registro-categoria.php" method="post">
+				<div class="row">
+					<div class="large-12 columns">
+						<input type="text" name="categoria" placeholder="Ingrese nueva categoria...">					
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-12 columns">
+						<input type="submit" value="Agregar" class="button expand tiny">
+					</div>
+				</div>
+			</form>
+		</div>
 		</div>
 	</div>
 	<div class="large-9 columns">

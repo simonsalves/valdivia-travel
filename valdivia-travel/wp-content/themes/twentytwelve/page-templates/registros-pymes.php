@@ -84,7 +84,7 @@ get_header(); ?>
 					<div class="large-6 columns">
 						<div class="latitud-field">
 							<label>Latitud <small>required</small>
-								<input type="text" name="latitud" pattern="integer" required>
+								<input type="text" name="latitud"  required>
 							</label>
 							<small class="error">Latitud incorrecta.</small>
 						</div>
@@ -92,7 +92,7 @@ get_header(); ?>
 					<div class="large-6 columns">
 						<div class="longitud-field">
 							<label>Longitud <small>required</small>
-								<input type="text" name="longitud" pattern="integer" required>
+								<input type="text" name="longitud"  required>
 							</label>
 							<small class="error">Longitud incorrecta.</small>
 						</div>
@@ -101,10 +101,16 @@ get_header(); ?>
 				<div class="row">
 					<div class="large-12 columns">
 						<label>Tipo
-							<select name="id_tipo">
-								<option>Seleccione el tipo</option>
-								<option value="1">1</option>
-							</select>
+							<?php include(TEMPLATEPATH."/php/mysql.php"); ?>
+							<?php $db = new MySQL(); ?>
+							<?php $consulta = $db -> consulta("SELECT * FROM tipo_pyme"); ?>
+							<?php if($db->num_rows($consulta)>0): ?>
+								<select name="tipo">
+								<?php while($resultados = $db->fetch_array($consulta)): ?>
+									<option value="<?php echo $resultados['id_tipo']; ?>"><?php echo $resultados['descripcion']; ?></option>
+								<?php endwhile; ?>
+								</select>
+							<?php endif; ?>
 						</label>
 					</div>
 				</div>

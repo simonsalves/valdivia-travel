@@ -16,10 +16,19 @@
 
 get_header(); ?>
 
+<?php include(TEMPLATEPATH."/php/mysql.php"); ?>
+<?php $db = new MySQL(); ?>
+
 <?php if (is_user_logged_in()): ?>
 	<div class="row">
-		<div class="large-12 columns text-center">
-			logeado
+		<div class="large-12 columns">
+		<?php $consulta = $db -> consulta("SELECT count(*) AS clientes FROM pyme_visitada"); ?>
+		<?php if($db->num_rows($consulta)>0): ?>
+			<p>Visitas</p>
+			<?php while($resultados = $db->fetch_array($consulta)): ?>
+				<?php echo $resultados['clientes']; ?>
+			<?php endwhile; ?>
+		<?php endif; ?>
 		</div>
 	</div>
 <?php else: ?>

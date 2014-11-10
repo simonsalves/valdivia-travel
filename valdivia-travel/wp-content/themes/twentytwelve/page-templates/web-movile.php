@@ -46,11 +46,11 @@
 			<a href="#panel1">Buscar lugares turisticos</a>
 			<div id="panel1" class="content">
 			<!-------------------------------------------------------------------------------------------------------------------------------->
-				<?php $consulta = $db -> consulta("SELECT descripcion, latitud, longitud FROM lugar"); ?>
+				<?php $consulta = $db -> consulta("SELECT * FROM lugar"); ?>
 				<?php if($db->num_rows($consulta)>0): ?>
 					<ul>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>"><?php echo $resultados['descripcion']; ?></a></li>
+							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>"><?php echo $resultados['descripcion']; ?></a> / <a href="<?php bloginfo('url'); ?>/?page_id=46&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>&tipo=lugares&id=<?php echo $resultados['id_lugar']; ?>">Visitar</a></li>
 						<?php endwhile; ?>
 					</ul>
 				<?php endif;  ?>
@@ -61,11 +61,11 @@
 			<a href="#panel2">Buscar pymes</a>
 			<div id="panel2" class="content">
 			<!-------------------------------------------------------------------------------------------------------------------------------->
-				<?php $consulta = $db -> consulta("SELECT descripcion, latitud, longitud FROM pyme"); ?>
+				<?php $consulta = $db -> consulta("SELECT * FROM pyme"); ?>
 				<?php if($db->num_rows($consulta)>0): ?>
 					<ul>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>"><?php echo $resultados['descripcion']; ?></a></li>
+							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>"><?php echo $resultados['descripcion']; ?></a> / <a href="<?php bloginfo('url'); ?>/?page_id=46&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>&tipo=pyme&id=<?php echo $resultados['id_pyme']; ?>">Visitar</a></li>
 						<?php endwhile; ?>
 					</ul>
 				<?php endif;  ?>
@@ -77,7 +77,8 @@
 			<div id="panel3" class="content">
 				
 					<blockquote>
-						<p>El turismo en Chile está muy bien valorado en el exterior, ya que nuestro país cuenta con climas fríos, templados, húmedos y 100% naturales, la zona sur del país tiene una amplia gama de ciudades, las cuales sus atractivos turísticos son el ingreso principal de las familias que viven en dicha ciudad. Ubicándonos en la región de los Ríos la cual tiene bellezas turísticas como la cuidad de Valdivia, la que cuenta con atractivos sitios como el Parque Oncol o el jardín botánico de la Universidad Austral de Chile e incluso esta ciudad tiene un balneario en la localidad de niebla (ubicada a 17 Kilómetros de la ciudad de Valdivia). Los residentes en la ciudad de Valdivia, en épocas turísticas arriendan sus casas ó cabañas y con estos ingresos suelen sustentarse la primera mitad del año.</p>
+						<p>El turismo en Chile está muy bien valorado en el exterior, ya que nuestro país cuenta con climas fríos, templados, húmedos y 100% naturales, la zona sur del país tiene una amplia gama de ciudades, las cuales sus atractivos turísticos son el ingreso principal de las familias que viven en dicha ciudad. Ubicándonos en la región de los Ríos la cual tiene bellezas turísticas como la cuidad de Valdivia, la que cuenta con atractivos sitios como el Parque Oncol o el jardín botánico de la Universidad Austral de Chile e incluso esta ciudad tiene un balneario en la localidad de niebla (ubicada a 17 Kilómetros de la ciudad de Valdivia). 
+						Los residentes en la ciudad de Valdivia, en épocas turísticas arriendan sus casas ó cabañas y con estos ingresos suelen sustentarse la primera mitad del año.</p>
 						<p>La problemática que se presenta es la mala gestión turística que tiene la ciudad de Valdivia, dado que al entrar a la ciudad en vehículo no tienes como saber cuáles son los atractivos turísticos de la zona ni tampoco cual es el comercio que esta geográficamente cerca. Como solución se ofrece un punto de encuentro entre el turista y las zonas turísticas más el comercio geográficamente cercano, al cual ellos podrán acceder en todo momento y en cualquier lugar a través de una aplicación móvil que esté disponible en sus “Smartphone” en la cual encontraran información oportuna, vigente y real.</p>
 						<p>
 							<img src="<?php echo get_template_directory_uri(); ?>/img/images/logo-Gmail.png" width="15" height="12"  alt=""/> info@mail.cl<br>
@@ -99,6 +100,7 @@
 			<div class="panel radius">
 				<div class="row">
 					<div class="large-7 columns">
+					<p>Recuerde: su nombre de usuario es su correo</p>
 						<?php wp_login_form(); ?>	
 						<a href="#" data-reveal-id="registro-cliente">Registrarse</a>
 					</div>

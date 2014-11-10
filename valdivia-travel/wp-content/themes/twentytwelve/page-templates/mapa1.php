@@ -21,6 +21,9 @@ get_header(); ?>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/Myriad_Pro_600.font.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
+<?php include(TEMPLATEPATH."/php/mysql.php"); ?>
+<?php $db = new MySQL(); ?>
+
 <!-------------------JAVA SCRIPT-------------------------------->
 <script type="text/javascript">
 function inicializaGoogleMaps(pos) {
@@ -37,7 +40,9 @@ function inicializaGoogleMaps(pos) {
 
     var mkr = new google.maps.Marker({
 			draggable: false, <!--  permite mover el icono -->
-			position: centro,
+			position: center,
+			icon: 'gps.png',   
+			title: 'de aqui somos',
 			map: map
 		 });
     
@@ -51,12 +56,13 @@ function newmap(x, y){
         center: new google.maps.LatLng(x, y),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-
+    var center = new google.maps.LatLng(x, y);
     var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
     
     var marker = new google.maps.Marker({
 	draggable: false, //permite mover el marcador
-	position: centro,   
+	position: center, //posicion del marcador
+	icon: 'gps.png',   
 	title: 'de aqui somos',
 	map: map
 	});
@@ -103,6 +109,21 @@ $(document).ready(function(){inicializaGoogleMaps()});
 					</div>
 					<div class="row">
 						<div class="large-12 columns">
+							<div class="row">
+							<?php $consulta = $db -> consulta("SELECT descripcion FROM tipo_pyme"); ?>
+								<?php if($db->num_rows($consulta)>0): ?>
+									<select name="tipo">
+									<option value="0">Filtrar</option>
+									<?php while($resultados = $db->fetch_array($consulta)): ?>
+										<option value="<?php echo $resultados['id_tipo']; ?>"><?php echo $resultados['descripcion']; ?></option>
+									<?php endwhile; ?>
+									</select>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-12 columns">
 							<input type="submit" name="mostrar" class="button expand tiny" value="Ver"><br/>
 						</div>
 					</div>
@@ -117,10 +138,7 @@ $(document).ready(function(){inicializaGoogleMaps()});
 <?php if(isset($_REQUEST['mostrar']) && isset($_REQUEST['clase'])){ ?>
         
     <?php $clase = $_POST['clase'];?>   
-
-
-        <?php include(TEMPLATEPATH."/php/mysql.php"); ?>
-        <?php $db = new MySQL(); ?>
+        
         <?php $consulta = $db -> consulta("SELECT * FROM $clase"); ?>
         <?php if($db->num_rows($consulta)>0): ?>
             <table>

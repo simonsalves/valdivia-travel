@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Mapa movil
+ * Template Name: Mapa movil visitado
  *
  * Description: Twenty Twelve loves the no-sidebar look as much as
  * you do. Use this page template to remove the sidebar from any page.
@@ -15,11 +15,24 @@
  */
 ?>
 <?php get_header('movil'); ?>
-
+<?php include(TEMPLATEPATH."/php/mysql.php"); ?>
+<?php $db = new MySQL(); ?>
+<?php $current_user = wp_get_current_user(); ?>
 <?php 
 	$lat = $_GET['lat'];
 	$long = $_GET['long'];
+	$id = $_GET['id'];
+	$id_c = $current_user->user_login;
+	$fecha = date('Y-m-d');
+	$tipo = $_GET['tipo'];
+	if ($tipo == "pyme") {
+		$consulta = $db -> consulta("INSERT INTO pyme_visitada(id_pyme_visitada, id_cliente_turismo, id_pyme, fecha) VALUES (NULL,'$id_c', '$id','$fecha')");
+	}else{
+		$consulta = $db -> consulta("INSERT INTO lugares_visitados(id_visita_lugar, id_lugar, id_cliente_turismo, fecha) VALUES (NULL, '$id', '$id_c', '$fecha')");
+	}
 ?>
+
+
 
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/cufon-yui.js"></script>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/cufon-replace.js"></script>  
@@ -81,16 +94,6 @@ function mapa(pos)
     		}
   		});
 	}
-
-
-
-	function calculaRuta()
-	{
-		
-	}
-
-
-
 
 	
 	function error(errorC)

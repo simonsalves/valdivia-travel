@@ -21,6 +21,9 @@ get_header(); ?>
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/Myriad_Pro_600.font.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
+<?php include(TEMPLATEPATH."/php/mysql.php"); ?>
+<?php $db = new MySQL(); ?>
+
 <!-------------------JAVA SCRIPT-------------------------------->
 <script type="text/javascript">
 function inicializaGoogleMaps(pos) {
@@ -105,25 +108,43 @@ $(document).ready(function(){inicializaGoogleMaps()});
 					</div>
 					<div class="row">
 						<div class="large-12 columns">
+							<div class="row">
+							<?php $consulta = $db -> consulta("SELECT * FROM tipo_pyme"); ?>
+								<?php if($db->num_rows($consulta)>0): ?>
+									<select name="filtro">
+									<option value="0">Filtrar</option>
+									<?php while($resultados = $db->fetch_array($consulta)): ?>
+										<option value="<?php echo $resultados['id_tipo']; ?>"><?php echo $resultados['descripcion']; ?></option>
+									<?php endwhile; ?>
+									</select>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-12 columns">
 							<input type="submit" name="mostrar" class="button expand tiny" value="Ver"><br/>
 						</div>
 					</div>
+					Nota: el filtro solo se aplica a PYME
 			  </fieldset>
 		    </form>
 		</div>
 	</div>
 
 	<div class="large-10 columns">
-		
 
 <?php if(isset($_REQUEST['mostrar']) && isset($_REQUEST['clase'])){ ?>
-        
+     
+	<?php $filtro = $_POST['filtro'];?>
     <?php $clase = $_POST['clase'];?>   
+		
+		<?php if ($filtro == 0 || $clase != "pyme"): ?>
+        	<?php $consulta = $db -> consulta("SELECT * FROM $clase"); ?>
+		<?php else: ?>	
+			<?php $consulta = $db -> consulta("SELECT * FROM $clase WHERE id_tipo = '$filtro'"); ?>	
+		<?php endif ?>
 
-
-        <?php include(TEMPLATEPATH."/php/mysql.php"); ?>
-        <?php $db = new MySQL(); ?>
-        <?php $consulta = $db -> consulta("SELECT * FROM $clase"); ?>
         <?php if($db->num_rows($consulta)>0): ?>
             <table>
 				<thead>

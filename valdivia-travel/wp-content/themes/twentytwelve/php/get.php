@@ -4,21 +4,47 @@
 <?php $db = new MySQL(); ?>
 <?php $consulta = $db -> consulta("SELECT * FROM lugar where descripcion = '$filtro'"); ?>
 <?php if($db->num_rows($consulta)>0): ?>
-	Los campos con * son obligatorios. <br><br>
 	<form action="wp-content/themes/twentytwelve/php/ed_lugar.php" method="POST">
 	<?php while($resultados = $db->fetch_array($consulta)): ?>
-		Descripcion*: <input type="text" placeholder="<?php echo $resultados['descripcion']; ?>" value="<?php echo $resultados['descripcion']; ?>" name="descripcion" />
-		Direcccion*: <input type="text" placeholder="<?php echo $resultados['direccion']; ?>" value="<?php echo $resultados['direccion']; ?>" name="direccion" /><br><br>
-		Telefono: <input type="text" placeholder="<?php echo $resultados['telefono']; ?>" value="<?php echo $resultados['telefono']; ?>" name="telefono" />
-		Horario*: <input type="text" placeholder="<?php echo $resultados['horario']; ?>" value="<?php echo $resultados['horario']; ?>" name="horario" /><br><br>
-		Pagina web: <input type="text" placeholder="<?php echo $resultados['url']; ?>" value="<?php echo $resultados['url']; ?>" name="url" />
-		correo: <input type="mail" placeholder="<?php echo $resultados['correo']; ?>" value="<?php echo $resultados['correo']; ?>" name="correo" /><br><br>
-		Latitud*: <input type="text" placeholder="<?php echo $resultados['latitud']; ?>" value="<?php echo $resultados['latitud']; ?>" name="latitud" />
-		Longitud*: <input type="text" placeholder="<?php echo $resultados['longitud']; ?>" value="<?php echo $resultados['longitud']; ?>" name="longitud" /><br><br>
+		<div class="row">
+			<div class="large-12 columns">
+				Descripcion*: <input type="text" placeholder="<?php echo $resultados['descripcion']; ?>" value="<?php echo $resultados['descripcion']; ?>" name="descripcion" />				
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-12 columns">
+				Direcccion*: <input type="text" placeholder="<?php echo $resultados['direccion']; ?>" value="<?php echo $resultados['direccion']; ?>" name="direccion" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				Telefono: <input type="text" placeholder="<?php echo $resultados['telefono']; ?>" value="<?php echo $resultados['telefono']; ?>" name="telefono" />
+			</div>
+			<div class="large-6 columns">
+				Horario*: <input type="text" placeholder="<?php echo $resultados['horario']; ?>" value="<?php echo $resultados['horario']; ?>" name="horario" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				Pagina web: <input type="text" placeholder="<?php echo $resultados['url']; ?>" value="<?php echo $resultados['url']; ?>" name="url" />
+			</div>
+			<div class="large-6 columns">
+				correo: <input type="text" placeholder="<?php echo $resultados['correo']; ?>" value="<?php echo $resultados['correo']; ?>" name="correo" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns">
+				Latitud*: <input type="text" placeholder="<?php echo $resultados['latitud']; ?>" value="<?php echo $resultados['latitud']; ?>" name="latitud" />
+			</div>
+			<div class="large-6 columns">
+				Longitud*: <input type="text" placeholder="<?php echo $resultados['longitud']; ?>" value="<?php echo $resultados['longitud']; ?>" name="longitud" />
+			</div>
+		</div>
 		<input type="hidden" name="id" value="<?php echo $resultados['id_lugar']; ?>"/>
 	<?php endwhile; ?>
-		<input type="submit" value="Guardar" />
+		<input type="submit" value="Guardar" class="button expand"/>
 	</form>
+	Los campos con * son obligatorios. 
 <?php endif; ?>
 
 
