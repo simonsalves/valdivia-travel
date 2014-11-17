@@ -26,9 +26,9 @@
 	$fecha = date('Y-m-d');
 	$tipo = $_GET['tipo'];
 	if ($tipo == "pyme") {
-		$consulta = $db -> consulta("INSERT INTO pyme_visitada(id_cliente_turismo, id_pyme, fecha) VALUES ('$id_c', '$id','$fecha')");
+		$consulta = $db -> consulta("INSERT INTO pyme_visitada(id_pyme_visitada, id_cliente_turismo, id_pyme, fecha) VALUES (NULL,'$id_c', '$id','$fecha')");
 	}else{
-		$consulta = $db -> consulta("INSERT INTO lugares_visitados(id_lugar, id_cliente_turismo, fecha) VALUES ('$id', '$id_c', '$fecha')");
+		$consulta = $db -> consulta("INSERT INTO lugares_visitados(id_visita_lugar, id_lugar, id_cliente_turismo, fecha) VALUES (NULL, '$id', '$id_c', '$fecha')");
 	}
 ?>
 
@@ -41,7 +41,7 @@
 <a id="estoy" href="#" data-lat="<?php echo $lat; ?>" data-lon="<?php echo $long; ?>"></a>
 
 <div id="mapa" style="width:100%; height:100%; margin:0 auto"> 
-	
+	En esta seccion usted podra acceder a la ubicacion exacta de los lugares turisticos y del mismo modo con las pymes
 </div>
 
 
