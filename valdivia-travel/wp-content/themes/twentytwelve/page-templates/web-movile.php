@@ -50,7 +50,7 @@
 				<?php if($db->num_rows($consulta)>0): ?>
 					<ul>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>"><?php echo $resultados['descripcion']; ?></a> / <a href="<?php bloginfo('url'); ?>/?page_id=46&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>&tipo=lugares&id=<?php echo $resultados['id_lugar']; ?>">Visitar</a></li>
+							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>&tipo=lugares&id=<?php echo $resultados['id_lugar']; ?>"><?php echo $resultados['descripcion']; ?></a></li>
 						<?php endwhile; ?>
 					</ul>
 				<?php endif;  ?>
@@ -65,7 +65,7 @@
 				<?php if($db->num_rows($consulta)>0): ?>
 					<ul>
 						<?php while($resultados = $db->fetch_array($consulta)): ?>
-							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>"><?php echo $resultados['descripcion']; ?></a> / <a href="<?php bloginfo('url'); ?>/?page_id=46&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>&tipo=pyme&id=<?php echo $resultados['id_pyme']; ?>">Visitar</a></li>
+							<li><a href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $resultados['latitud']; ?>&long=<?php echo $resultados['longitud']; ?>&tipo=pyme&id=<?php echo $resultados['id_pyme']; ?>"><?php echo $resultados['descripcion']; ?></a></li>
 						<?php endwhile; ?>
 					</ul>
 				<?php endif;  ?>
@@ -100,13 +100,28 @@
 			<div class="panel radius">
 				<div class="row">
 					<div class="large-7 columns">
-					<p>Recuerde: su nombre de usuario es su correo</p>
-						<?php wp_login_form(); ?>	
+						<?php $args = array(
+							'echo'           => true,
+							'redirect' => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], // Default redirect is back to the current page
+							'form_id'        => 'loginform',
+							'label_username' => __( 'Correo' ),
+							'label_password' => __( 'Password' ),
+							'label_remember' => __( 'Remember Me' ),
+							'label_log_in'   => __( 'Log In' ),
+							'id_username'    => 'user_login',
+							'id_password'    => 'user_pass',
+							'id_remember'    => 'rememberme',
+							'id_submit'      => 'wp-submit',
+							'remember'       => true,
+							'value_username' => NULL,
+							'value_remember' => false
+						); ?>
+						<?php wp_login_form($args); ?>	
 						<a href="#" data-reveal-id="registro-cliente">Registrarse</a>
 					</div>
 					<div class="large-5 columns">
 						<div class="row">
-							<div class="small-12 columns">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis dolores quaerat eveniet repellendus est saepe maxime, quam, accusantium fugit, iusto accusamus? Laborum repellat a maiores possimus sit harum optio, beatae!</div>
+							<div class="small-12 columns"></div>
 						</div>
 					</div>
 				</div>

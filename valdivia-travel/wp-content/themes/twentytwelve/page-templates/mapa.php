@@ -24,12 +24,27 @@ get_header(); ?>
 <?php include(TEMPLATEPATH."/php/mysql.php"); ?>
 <?php $db = new MySQL(); ?>
 
+<?php if ((isset($_REQUEST['la']) && isset($_REQUEST['lo']))): ?>
+	<?php $latitude = $_GET['la']; ?>
+	<?php $longitude = $_GET['lo']; ?>
+	<a id="direcciones" href="#" data-lat="<?php echo $latitude; ?>" data-lon="<?php echo $longitude; ?>"></a>
+	<script>
+		var x = $('#direcciones').attr('data-lat');
+		var y = $('#direcciones').attr('data-lon');
+    	var center = new google.maps.LatLng(x, y);
+	</script>
+<?php else: ?>	
+	<script>
+		var x =-39.8180; 
+		var y = -73.2547;
+	</script>
+<?php endif; ?>
+
+
 <!-------------------JAVA SCRIPT-------------------------------->
 <script type="text/javascript">
 function inicializaGoogleMaps(pos) {
     // COORDENADAS PARA CENTRAR EL MAPA
-    var x =-39.8180; 
-    var y = -73.2547;
     var propiedades = { //OPCIONES DEL MAPA
         zoom: 15, //ZOOM DEL MAPA
         center: new google.maps.LatLng(x, y),
@@ -38,12 +53,11 @@ function inicializaGoogleMaps(pos) {
 
     var mapa = new google.maps.Map(document.getElementById("mapa"), propiedades);
 
-    var mkr = new google.maps.Marker({
-			draggable: false, <!--  permite mover el icono -->
-			position: centro,
-			map: map
-		 });
-    
+    var marker = new google.maps.Marker({
+		draggable: false, //permite mover el marcador
+		position: center, //posicion del marcador
+		map: mapa
+		});   
 }
 
 function newmap(x, y){

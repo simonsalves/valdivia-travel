@@ -34,7 +34,24 @@ get_header(); ?>
 <?php else: ?>
 	<div class="row">
 		<div class="large-5 columns">
-			<?php wp_login_form(); ?>
+			<?php $args = array(
+				'echo'           => true,
+				'redirect' => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], // Default redirect is back to the current page
+				'form_id'        => 'loginform',
+				'label_username' => __( 'Rut' ),
+				'label_password' => __( 'Password' ),
+				'label_remember' => __( 'Remember Me' ),
+				'label_log_in'   => __( 'Log In' ),
+				'id_username'    => 'user_login',
+				'id_password'    => 'user_pass',
+				'id_remember'    => 'rememberme',
+				'id_submit'      => 'wp-submit',
+				'remember'       => true,
+				'value_username' => NULL,
+				'value_remember' => false
+			); ?>
+			<?php wp_login_form($args); ?>	
+		
 		</div>
 	</div>
 <?php endif; ?>

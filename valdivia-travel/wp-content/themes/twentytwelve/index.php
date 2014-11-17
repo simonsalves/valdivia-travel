@@ -67,7 +67,7 @@
 					<h5>Paseo Libertad</h5>
 					Ubicado despues de la plaza de armas.
 					<br/>
-					<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a>
+					<a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.813735&lo=-73.246517"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a>
 				</div>
 			</div>
 			<div class="row"><div class="large-12 columns"><hr/></div></div>
@@ -79,7 +79,7 @@
 					<h5>Museo flotante O'Brien</h5>
 					El O'Brien
 					<br/>
-					<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a>
+					<a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.815354&lo=-73.248770"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a>
 				</div>
 			</div>
 		</div>

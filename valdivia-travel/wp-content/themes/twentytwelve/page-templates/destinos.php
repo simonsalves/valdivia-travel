@@ -78,7 +78,7 @@ get_header(); ?>
 				</div>
 				<div class="large-7 columns">
 					<h5>Parque Oncol</h5>
-					<p class="size-12">En el parque se encuentran áreas para acampar y hacer picnic; además existen 4 miradores. Dos se encuentran a paso de vehículos, con vista a la ciudad de Valdivia. Los miradores de la cima del cerro Oncol tienen una completa vista panorámica hacia el mar, hacia ambas cordilleras, y al valle central. Desde aquí se pueden apreciar once volcanes, desde el Llaima por el norte hasta el volcán Osorno y el Tronador en la frontera con Argentina por el sur. <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a></p>
+					<p class="size-12">En el parque se encuentran áreas para acampar y hacer picnic; además existen 4 miradores. Dos se encuentran a paso de vehículos, con vista a la ciudad de Valdivia. Los miradores de la cima del cerro Oncol tienen una completa vista panorámica hacia el mar, hacia ambas cordilleras, y al valle central. Desde aquí se pueden apreciar once volcanes, desde el Llaima por el norte hasta el volcán Osorno y el Tronador en la frontera con Argentina por el sur. <a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.699939&lo=-73.326723"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a></p>
 				</div>
 			</div>
 			<div class="row"><div class="large-12 columns"><hr/></div></div>
@@ -89,7 +89,7 @@ get_header(); ?>
 				<div class="large-7 columns">
 					<h5>Feria Fluvial de Valdivia</h5>
 					<p class="size-12">La Feria Fluvial de Valdivia es un mercado ubicado en la Costanera Arturo Prat, muy cerca de la Catedral y del Puente Pedro de Valdivia que conecta al centro de la ciudad con la Isla Teja.</p>
-					<p class="size-12">En esta feria se comercializan mariscos, pescados, vegetales y otros tipos de alimentos, así como también artesanía local. <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a></p>
+					<p class="size-12">En esta feria se comercializan mariscos, pescados, vegetales y otros tipos de alimentos, así como también artesanía local. <a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.814579&lo=-73.248794"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a></p>
 				</div>
 			</div>
 			<div class="row"><div class="large-12 columns"><hr/></div></div>
@@ -99,7 +99,7 @@ get_header(); ?>
 				</div>
 				<div class="large-7 columns">
 					<h5>Centro de estudios Cientificos</h5>
-					<p class="size-12">El Centro de Estudios Científicos (CECS) es una corporación de derecho privado, sin fines de lucro, dedicada al desarrollo, fomento y difusión de la investigación científica y esta ubicado en el centro de Valdivia. El CECS fue fundado en 1984 como el Centro de Estudios Científicos, y ha sido dirigido desde entonces por el físico Claudio Bunster. <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a></p>
+					<p class="size-12">El Centro de Estudios Científicos (CECS) es una corporación de derecho privado, sin fines de lucro, dedicada al desarrollo, fomento y difusión de la investigación científica y esta ubicado en el centro de Valdivia. El CECS fue fundado en 1984 como el Centro de Estudios Científicos, y ha sido dirigido desde entonces por el físico Claudio Bunster. <a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.813990&lo=-73.248134"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_2.gif"></a></p>
 				</div>
 			</div>
 		</div>
