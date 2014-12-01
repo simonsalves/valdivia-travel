@@ -30,9 +30,9 @@ get_header(); ?>
 
 <?php $current_user = wp_get_current_user(); ?>
 <?php $duen = $current_user->user_login; ?>
-<?php $duen = str_replace('-', '',$duen); //le saca el guion "-" al rut?> 
+<?php $duen = str_replace('-', '',$duen); //PROBANDO PROBANDO?> 
 
-
+DUEÑO: <?php echo $duen; ?> <?php // PRUEBA SIMON ?>
 
 
 <?php $consulta2 = $db -> consulta("SELECT id_pyme FROM dueno_pyme WHERE id_cliente_pyme like '$duen'"); ?>
@@ -43,7 +43,7 @@ get_header(); ?>
 			<?php endif; ?>
 					<?php // echo $pyme; //Muestra el id de la pyque que posee el dueño ?>
 
-
+<br>ID DE LA PYME QUE POSEE: <?php echo $pyme; ?>
 
 <?php $consulta2 = $db -> consulta("SELECT descripcion FROM pyme WHERE id_pyme = '$pyme'"); ?>
 			<?php if($db->num_rows($consulta2)>0): ?>

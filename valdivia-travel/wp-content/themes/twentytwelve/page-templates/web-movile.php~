@@ -101,41 +101,42 @@ GROUP BY l.id_lugar"); ?>
                         <div id="panel2" class="content">
                         <!-------------------------------------------------------------------------------------------------------------------------------->
 
+								<!--
 
 
-<?php $consulta = $db -> consulta("SELECT * FROM tipo_pyme"); ?>
-<?php if($db->num_rows($consulta)>0): ?>
-<form action="<?php bloginfo('url'); ?>/?page_id=39" method="post">
-    
-        <div class="large-9 columns">
-            <select name="filtro" id="">Seleccione un filtro
-            <?php while($resultados = $db->fetch_array($consulta)): ?>
-                <option value="<?php echo $resultados['id_tipo']; ?>"><?php echo $resultados['descripcion']; ?></option>
-            <?php endwhile; ?>
-            </select>    
-        </div>
-        <div class="large-3 columns">
-            <input type="submit" value="Filtrar" class="button expand tiny">
-        </div>
-    
-</form>
-<?php endif;  ?>
-<div class="row"><br></div>
+								<?php $consulta = $db -> consulta("SELECT * FROM pyme"); ?>
+                                <?php if($db->num_rows($consulta)>0): ?>
+                                        <ul>
+	                                        <?php while($resultados = $db->fetch_array($consulta)): ?>
+													<?php $descripcion = $resultados['descripcion']; ?>
+													<?php $latitud = $resultados['latitud']; ?>
+													<?php $longitud = $resultados['longitud']; ?>
+													<?php $id_pyme =$resultados['id_pyme']; ?>
+													<?php $consulta2 = $db -> consulta("SELECT count(*) AS visitas FROM pyme_visitada WHERE id_pyme = '$id_pyme' GROUP BY id_pyme"); ?>							
+													<?php if($db->num_rows($consulta2) > 0): ?>
+						                                <?php while($resultados = $db->fetch_array($consulta2)): ?>
+															<?php $cantidad = $resultados['visitas']; ?>
+																<?php $consulta3 = $db -> consulta("SELECT id_cliente_turismo FROM pyme_visitada WHERE id_pyme = '$id_pyme'"); ?>							
+																<?php if($db->num_rows($consulta3) > 0): ?>
+									                                <?php while($resultados = $db->fetch_array($consulta3)): ?>
+																		<?php $cliente = $resultados['id_cliente_turismo']; ?>
+																				<?php if ($cliente == $usuario): ?>
+																					<?php $color = "style=color:green !important;"; ?>
+																				<?php endif ?>
+																	<?php endwhile; ?>
+																<?php endif; ?>
+	                                                        			<li><a <?php echo $color; ?> href="<?php bloginfo('url'); ?>/?page_id=42&lat=<?php echo $latitud; ?>&long=<?php echo $longitud; ?>&tipo=lugares&id=<?php echo $id_lugar; ?>"><?php echo $descripcion; ?>(<?php echo $cantidad; ?>)</a></li>
+						                                <?php endwhile; ?>
+						                            <?php endif;  ?>
 
-<?php if (isset($_POST['filtro'])): ?>
-<?php $filtra = $_POST['filtro'] ?>
+	                                        <?php endwhile; ?>
+                                        </ul>
+                                <?php endif;  ?>
+-->
+
 <?php $consulta = $db -> consulta("SELECT p.id_pyme AS id, p.latitud AS latitud, p.longitud AS longitud, p.descripcion AS descripcion, IFNULL(COUNT(pv.id_pyme),0) AS visitas FROM pyme p
 LEFT JOIN pyme_visitada pv ON p.id_pyme = pv.id_pyme
-WHERE p.id_tipo = '$filtra'
 GROUP BY p.id_pyme "); ?>
-<?php else: ?>
-<?php $consulta = $db -> consulta("SELECT p.id_pyme AS id, p.latitud AS latitud, p.longitud AS longitud, p.descripcion AS descripcion, IFNULL(COUNT(pv.id_pyme),0) AS visitas FROM pyme p
-LEFT JOIN pyme_visitada pv ON p.id_pyme = pv.id_pyme
-GROUP BY p.id_pyme "); ?>
-    
-<?php endif ?>
-
-
                                 <?php if($db->num_rows($consulta)>0): ?>
                                         <ul>
                                                 <?php while($resultados = $db->fetch_array($consulta)): ?>
