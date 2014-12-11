@@ -21,38 +21,38 @@
 			<div class="row">
 				<div class="large-6 columns">
 					<div class="large-12 columns">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/page1_img1.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/la-ultima.jpg">
 						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
-				<h5>Italy Holidays</h5>
-				Lorem ipsum dolor sit amet, consect etuer adipiscing.
+			<b>	<h5>La ultima frontera</h5>	</b>			
+				bar/pub
 				</div>
 			</div>
 			<div class="row"><div class="large-12 columns"><hr/></div></div>
 			<div class="row">
 				<div class="large-6 columns">
 					<div class="large-12 columns">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/page1_img2.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/entrelagos.jpg">
 						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
-				<h5>Philippines Travel</h5>
-				Lorem ipsum dolor sit amet, consect etuer adipiscing.
+				<h5>Entre Lagos</h5>
+				Chocolateria y restaurant
 				</div>
 			</div>
 			<div class="row"><div class="large-12 columns"><hr/></div></div>
 			<div class="row">
 				<div class="large-6 columns">
 					<div class="large-12 columns">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/page1_img3.jpg">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/boti.jpeg">
 						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
-				<h5>Cruise Holidays</h5>
+				<h5>Botilleria el torreon</h5>
 				Lorem ipsum dolor sit amet, consect etuer adipiscing.
 				</div>
 			</div>

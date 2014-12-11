@@ -29,7 +29,7 @@ get_header(); ?>
 </div>
 <div class="row">
 	<div class="large-12 columns text-center">
-		
+		<img src="<?php echo get_template_directory_uri(); ?>/img/Intranet.png">
 	</div>
 </div>
 <div class="row">
