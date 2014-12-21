@@ -113,7 +113,7 @@
 						<li><a href="<?php bloginfo('url'); ?>" class="nav1">Inicio</a></li>
 						<li><a href="<?php bloginfo('url'); ?>/?page_id=8" class="nav2">Nosotros </a></li>
 						<li><a href="<?php bloginfo('url'); ?>/?page_id=20" class="nav3">MAPA</a></li>
-						<li><a href="<?php bloginfo('url'); ?>/?page_id=9" class="nav4">Destinos</a></li>
+						<li><a href="<?php bloginfo('url'); ?>/?page_id=8" class="nav4">Destinos</a></li>
 						<li class="end"><a href="<?php bloginfo('url'); ?>/?page_id=33" class="nav5">Contacto</a></li>
 					</ul>
 				</nav>

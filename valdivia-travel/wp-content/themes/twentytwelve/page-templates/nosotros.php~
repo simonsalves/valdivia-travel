@@ -33,38 +33,38 @@ get_header(); ?>
 			<div class="row">
 				<div class="large-6 columns">
 					<div class="large-12 columns">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/la-ultima.jpg">
-						<a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.817541&lo=-73.247417"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/page1_img1.jpg">
+						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
-			<b>	<h5>La ultima frontera</h5>	</b>			
-				bar/pub
+				<h5>Italy Holidays</h5>
+				Lorem ipsum dolor sit amet, consect etuer adipiscing.
 				</div>
 			</div>
 			<div class="row"><div class="large-12 columns"><hr/></div></div>
 			<div class="row">
 				<div class="large-6 columns">
 					<div class="large-12 columns">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/entrelagos.jpg">
-						<a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.815384&lo=-73.246438"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/page1_img2.jpg">
+						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
-				<h5>Entre Lagos</h5>
-				Chocolateria y restaurant
+				<h5>Philippines Travel</h5>
+				Lorem ipsum dolor sit amet, consect etuer adipiscing.
 				</div>
 			</div>
 			<div class="row"><div class="large-12 columns"><hr/></div></div>
 			<div class="row">
 				<div class="large-6 columns">
 					<div class="large-12 columns">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/boti.jpeg">
-						<a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.819156&lo=-73.247640"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/page1_img3.jpg">
+						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
-				<h5>Botilleria el torreon</h5>
+				<h5>Cruise Holidays</h5>
 				Lorem ipsum dolor sit amet, consect etuer adipiscing.
 				</div>
 			</div>
