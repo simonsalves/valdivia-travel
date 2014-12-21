@@ -22,7 +22,7 @@
 				<div class="large-6 columns">
 					<div class="large-12 columns">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/la-ultima.jpg">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
+						<a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.817541&lo=-73.247417"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
@@ -35,7 +35,7 @@
 				<div class="large-6 columns">
 					<div class="large-12 columns">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/entrelagos.jpg">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
+						<a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.815384&lo=-73.246438"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
@@ -48,7 +48,7 @@
 				<div class="large-6 columns">
 					<div class="large-12 columns">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/boti.jpeg">
-						<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
+						<a href="<?php bloginfo('url'); ?>/?page_id=20&la=-39.819156&lo=-73.247640"><img src="<?php echo get_template_directory_uri(); ?>/img/marker_1.gif"></a>
 					</div>
 				</div>
 				<div class="large-6 columns">
